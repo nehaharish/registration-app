@@ -40,7 +40,6 @@ indexRouter.post('/register', async function (req, res) {
     });
 
     // Create token
-    console.log('fhwfhwfhwfljwflkjf');
     const token = jwt.sign({ user_Id: user._id, email }, secretToken, {
       expiresIn: '2h',
     });
