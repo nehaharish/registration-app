@@ -41,10 +41,10 @@ indexRouter.post('/register', async function (req, res) {
 
     // Create token
     const token = jwt.sign({ user_Id: user._id, email }, secretToken, {
-      expiresIn: '2h',
+      expiresIn: '2m',
     });
-    user.token = token;
-    res.status(201).json(user);
+    // user.token = token;
+    res.status(201).json({ success: true, token: token});
   } catch (err) {
     console.log(err);
   }
@@ -72,10 +72,14 @@ indexRouter.post('/login', async function (req, res) {
     ) {
       //Create token
       const token = jwt.sign({ user_Id: user._id, email }, secretToken, {
-        expiresIn: '2h',
+        expiresIn: '2m',
       });
-      user.token = token;
-      res.status(200).json(user);
+      // user.token = token;
+      // console.log(user,user.token)
+      res.status(200).json({ success: true, token: token});
+    }
+    else {
+      return res.status(400).send('Email and password does not match');
     }
   } catch (err) {
     console.log(err);

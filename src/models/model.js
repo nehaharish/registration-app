@@ -7,7 +7,7 @@ export async function registerUser(userInfo){
     const data = await pool.query( query,values)
     .then(res => res.rows)
     .catch(err => console.log("Error",err))
-     await pool.end();
+    // await pool.end();
      return data;
     
  }
